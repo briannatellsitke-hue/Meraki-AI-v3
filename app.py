@@ -200,12 +200,4 @@ elif mode == "🎤 Voice":
 
 st.markdown("---")
 st.markdown('<p style="text-align:center; color:#6B0F2A; font-weight:800;">MERAKI AI © 2026 • BUILT WITH SOUL IN KENYA 🇰🇪</p>', unsafe_allow_html=True)
-
-
-What v3 does now
-
-- 🎨 Real Image: Uses gemini-2.0-flash-preview-image-generation. You get a real picture + Download button. If your key doesn't allow it, it will tell you, and you can use "Prompt Only" fallback.
-- 🎤 Voice: Uses st.audio_input - you can record in the app. Type fallback included.
-- ✍️ Write: Now saves your last CV / Proposal and gives you Download button.
-- 📊 Predict: You can now upload CSV file, not just paste.
-- 💬 Chat: Burgundy chat bubbles, Clear Chat button.
+st.markdown("---")

@@ -201,3 +201,48 @@ elif mode == "🎤 Voice":
 st.markdown("---")
 st.markdown('<p style="text-align:center; color:#6B0F2A; font-weight:800;">MERAKI AI © 2026 • BUILT WITH SOUL IN KENYA 🇰🇪</p>', unsafe_allow_html=True)
 st.markdown("---")
+python
+# --- Meraki Sex Education - Educational Only ---
+SEX_ED_TOPICS = {
+    "Consent": "Consent means a clear, freely given YES every time. No = No. Silence = No. If someone is drunk, asleep, or scared, they cannot consent. You can change your mind at any time.",
+    "How Pregnancy Happens": "Pregnancy happens when sperm meets an egg during vaginal sex around ovulation. It can happen the first time. Pulling out is NOT reliable. Use condoms, pills, injection, implant, or IUD to prevent it.",
+    "Contraception": "Options: 1) Condom - only method that also prevents STIs. 2) Pill - daily. 3) Injection - every 3 months. 4) Implant / IUD - long term. 5) Emergency pill (P2) - within 72 hours after unprotected sex, not for regular use. Talk to a nurse to choose what fits you.",
+    "STIs & Testing": "Common STIs: HIV, chlamydia, gonorrhea, syphilis, HPV, herpes. Many have NO symptoms. Use condoms, get tested regularly, tell your partner to test too. Most are treatable if you go to a clinic early.",
+    "HIV - PrEP & PEP": "PrEP prevents HIV before exposure (daily pill). PEP is emergency medicine after exposure - go to hospital within 72 hours. Condoms still recommended.",
+    "Hygiene & Health": "Wash with water only. Vagina cleans itself, don't use harsh soaps inside. Pee after sex to help prevent UTIs. Pain, unusual discharge, sores, or irregular bleeding = see a nurse/doctor.",
+    "Myths - NOT True": "Myth: You can't get pregnant on your period - You CAN. Myth: Jumping/washing after prevents pregnancy - It does NOT. Myth: Condoms cause infertility - They do NOT. Myth: Masturbation makes you weak - It does NOT.",
+    "Talking to Your Partner": "Talk about protection BEFORE sex, not after. It's okay to ask: 'Have you been tested?' 'Can we use a condom?' A good partner will respect that."
+}
+
+SEX_ED_SYSTEM_PROMPT = """
+You are Meraki AI, a respectful health educator.
+Provide factual, non-judgmental, educational information about sexual health.
+- No graphic erotic detail, no pornographic language.
+- Keep it age-appropriate, clear, and private.
+- Focus on consent, safety, contraception, STIs, hygiene, and communication.
+- Always encourage seeing a nurse/doctor for personal medical issues.
+- If asked for explicit sexual content, refuse and offer educational info instead.
+- Use simple language suitable for Kenya.
+"""# Add "Sex Education" to your mode selector
+mode = st.sidebar.selectbox("Choose Mode", ["Chat", "Write CV", "Sex Education"])
+
+if mode == "Sex Education":
+    st.header("Sex Education - Private & Safe 💙")
+    st.info("Educational only. No personal data is saved. For personal issues, please see a nurse/doctor.")
+    
+    topic = st.selectbox("Choose a topic:", list(SEX_ED_TOPICS.keys()))
+    st.write(SEX_ED_TOPICS[topic])
+    
+    st.divider()
+    st.subheader("Ask Meraki a private question")
+    q = st.text_input("Ask a question (e.g. How do condoms work?)")
+    
+    if st.button("Ask"):
+        if q:
+            with st.spinner("Meraki is thinking..."):
+                # Use your 3.8 model with safe prompt
+                full_prompt = SEX_ED_SYSTEM_PROMPT + "\nUser question: " + q
+                response = model.generate_content(full_prompt)
+                st.write(response.text)
+        else:
+            st.warning("Please type a question first.")

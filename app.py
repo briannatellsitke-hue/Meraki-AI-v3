@@ -69,9 +69,9 @@ if not api_key:
     st.stop()
 
 genai.configure(api_key=api_key)
-text_model = genai.GenerativeModel("gemini-3.8-flash")
+text_model = genai.GenerativeModel("gemini-2.5-flash")
 # Real image model
-image_model = genai.GenerativeModel("gemini-3.8-flash-preview-image-generation")
+image_model = genai.GenerativeModel("gemini-2.5-flash-preview-image-generation")
 
 if "history" not in st.session_state:
     st.session_state.history = []
